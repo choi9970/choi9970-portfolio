@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">LearnIT 배포 구조</title>
+  <desc id="desc">Developer Local Environment, GitHub Repositories, AWS Cloud, EC2 서버, Nginx, Docker Compose, Spring Boot, MySQL, Chat Agent Container로 구성된 LearnIT 배포 구조</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6c7887"/>
+    </marker>
+    <style>
+      .bg { fill: #f7f7f5; }
+      .frame { fill: #fbfbfa; stroke: #c9c9c3; stroke-width: 2; rx: 18; ry: 18; }
+      .group { fill: none; stroke: #8e8e88; stroke-width: 2; }
+      .box { fill: #f9f9f7; stroke: #9a9a94; stroke-width: 1.8; }
+      .line { fill: none; stroke: #7a7a74; stroke-width: 2.2; marker-end: url(#arrow); }
+      .title { font: 700 18px 'Noto Sans KR', sans-serif; fill: #2c2c2a; }
+      .label { font: 600 16px 'Noto Sans KR', sans-serif; fill: #2d2d2a; }
+      .text { font: 500 15px 'Noto Sans KR', sans-serif; fill: #33332f; }
+      .small { font: 500 14px 'Noto Sans KR', sans-serif; fill: #50504d; }
+      .tiny { font: 500 13px 'Noto Sans KR', sans-serif; fill: #575753; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="1500"/>
+  <rect x="16" y="16" width="1168" height="1468" class="frame"/>
+
+  <g>
+    <rect x="250" y="70" width="540" height="180" class="group"/>
+    <text x="520" y="92" text-anchor="middle" class="title">Developer Local Environment</text>
+
+    <rect x="275" y="118" width="205" height="110" class="box"/>
+    <text x="377" y="154" text-anchor="middle" class="label">Chat Agent 개발</text>
+    <text x="377" y="185" text-anchor="middle" class="text">Python / FastAPI</text>
+    <text x="377" y="214" text-anchor="middle" class="text">learnit-chat-agent</text>
+
+    <rect x="560" y="118" width="205" height="110" class="box"/>
+    <text x="662" y="154" text-anchor="middle" class="label">Backend 개발</text>
+    <text x="662" y="185" text-anchor="middle" class="text">Spring Boot</text>
+    <text x="662" y="214" text-anchor="middle" class="text">Acorn_Project_LearnIT</text>
+
+    <text x="328" y="314" text-anchor="middle" class="small">push release</text>
+    <path class="line" d="M377 228 L377 420"/>
+
+    <text x="662" y="314" text-anchor="middle" class="small">push release</text>
+    <path class="line" d="M662 228 L662 420"/>
+
+    <rect x="250" y="380" width="700" height="240" class="group"/>
+    <text x="600" y="402" text-anchor="middle" class="title">GitHub Repositories</text>
+
+    <rect x="275" y="445" width="185" height="140" class="box"/>
+    <text x="367" y="478" text-anchor="middle" class="label">learnit-chat-agent</text>
+    <text x="367" y="512" text-anchor="middle" class="text">- release 브랜치</text>
+    <text x="367" y="540" text-anchor="middle" class="text">- Dockerfile</text>
+    <text x="367" y="568" text-anchor="middle" class="text">- GitHub Actions</text>
+
+    <rect x="508" y="445" width="205" height="140" class="box"/>
+    <text x="610" y="478" text-anchor="middle" class="label">Acorn_Project_LearnIT (Fork)</text>
+    <text x="610" y="512" text-anchor="middle" class="text">- release 브랜치</text>
+    <text x="610" y="540" text-anchor="middle" class="text">- Dockerfile</text>
+    <text x="610" y="568" text-anchor="middle" class="text">- GitHub Actions</text>
+
+    <rect x="762" y="445" width="160" height="140" class="box"/>
+    <text x="842" y="478" text-anchor="middle" class="label">learnit-deploy</text>
+    <text x="842" y="512" text-anchor="middle" class="text">- docker compose.yml</text>
+    <text x="842" y="540" text-anchor="middle" class="text">- nginx 설정</text>
+    <text x="842" y="568" text-anchor="middle" class="text">- certbot 설정</text>
+    <text x="842" y="596" text-anchor="middle" class="text">(웹 노출용)</text>
+
+    <text x="370" y="700" text-anchor="middle" class="small">GitHub Actions</text>
+    <text x="370" y="724" text-anchor="middle" class="small">build &amp; push</text>
+    <path class="line" d="M367 585 L367 760"/>
+
+    <text x="612" y="700" text-anchor="middle" class="small">GitHub Actions</text>
+    <text x="612" y="724" text-anchor="middle" class="small">build &amp; push</text>
+    <path class="line" d="M612 585 L612 760"/>
+
+    <text x="862" y="710" text-anchor="middle" class="small">git pull</text>
+    <path class="line" d="M842 585 L842 692 L1070 692 L1070 1068"/>
+
+    <rect x="20" y="770" width="940" height="310" class="group"/>
+    <text x="490" y="792" text-anchor="middle" class="title">AWS Cloud</text>
+
+    <rect x="260" y="828" width="460" height="120" class="group"/>
+    <text x="490" y="850" text-anchor="middle" class="title">Amazon ECR</text>
+
+    <rect x="290" y="880" width="190" height="48" class="box"/>
+    <text x="385" y="910" text-anchor="middle" class="text">learnit chat-agent 이미지</text>
+
+    <rect x="500" y="880" width="190" height="48" class="box"/>
+    <text x="595" y="910" text-anchor="middle" class="text">learnit backend 이미지</text>
+
+    <path class="line" d="M367 760 L367 880"/>
+    <path class="line" d="M612 760 L612 880"/>
+
+    <text x="358" y="1126" text-anchor="middle" class="small">docker pull</text>
+    <path class="line" d="M385 928 L385 1178"/>
+
+    <text x="520" y="1126" text-anchor="middle" class="small">docker pull</text>
+    <path class="line" d="M595 928 L595 1178"/>
+
+    <rect x="40" y="1108" width="940" height="340" class="group"/>
+    <text x="510" y="1130" text-anchor="middle" class="title">EC2 (Production Server)</text>
+
+    <rect x="70" y="1180" width="170" height="110" class="box"/>
+    <text x="155" y="1232" text-anchor="middle" class="label">Nginx</text>
+    <text x="155" y="1260" text-anchor="middle" class="text">Reverse Proxy / SSL</text>
+
+    <rect x="400" y="1232" width="170" height="64" class="box"/>
+    <text x="485" y="1270" text-anchor="middle" class="label">Docker Compose</text>
+
+    <path class="line" d="M155 1290 L155 1362 L310 1362 L310 1362"/>
+    <text x="170" y="1344" class="small">reverse proxy</text>
+
+    <path class="line" d="M405 1178 L405 1232"/>
+    <path class="line" d="M615 1178 L615 1232 L570 1232"/>
+
+    <path class="line" d="M485 1296 L485 1362"/>
+
+    <rect x="100" y="1362" width="210" height="64" class="box"/>
+    <text x="205" y="1400" text-anchor="middle" class="label">Spring Boot Container</text>
+
+    <rect x="390" y="1362" width="190" height="64" class="box"/>
+    <text x="485" y="1400" text-anchor="middle" class="label">MySQL Container</text>
+
+    <rect x="660" y="1362" width="210" height="64" class="box"/>
+    <text x="765" y="1400" text-anchor="middle" class="label">Chat Agent Container</text>
+
+    <path class="line" d="M485 1296 L485 1362"/>
+    <path class="line" d="M485 1328 L205 1328 L205 1362"/>
+    <path class="line" d="M485 1328 L765 1328 L765 1362"/>
+  </g>
+</svg>
