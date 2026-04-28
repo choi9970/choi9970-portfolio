@@ -6,5 +6,6 @@ dist
 .vercel
 .codex
 _repo_inspect
+public/*.docx
 
 .vercel
