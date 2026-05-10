@@ -12,6 +12,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
     "express": "^4.21.2",
     "googleapis": "^154.1.0",
     "react": "^18.3.1",

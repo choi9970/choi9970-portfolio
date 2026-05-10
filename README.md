@@ -10,7 +10,11 @@ Vite + React 기반 포트폴리오 사이트입니다.
 - GitHub 통계 API
   - 로컬 개발: `server.js`
   - Vercel 배포: `api/github/stats.js`
+- 문의 폼 API
+  - 로컬 개발: `server.js`
+  - Vercel 배포: `api/contact.js`
 - 공용 GitHub 통계 로직: `lib/github-stats.js`
+- 공용 문의 저장 로직: `lib/contact-inquiries.js`
 
 ## 기술 스택
 
@@ -19,6 +23,7 @@ Vite + React 기반 포트폴리오 사이트입니다.
 - Express
 - GitHub GraphQL API
 - Vercel Serverless Functions
+- Supabase
 
 ## 로컬 실행
 
@@ -36,6 +41,8 @@ npm install
 PORT=3000
 GITHUB_USERNAME=choi9970
 GITHUB_TOKEN=your_github_token
+SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_SECRET_KEY=your_supabase_secret_key
 ```
 
 ### 3. 개발 서버 실행
@@ -63,6 +70,8 @@ npm run build
 
 - `GITHUB_USERNAME`
 - `GITHUB_TOKEN`
+- `SUPABASE_URL`
+- `SUPABASE_SECRET_KEY`
 
 ### 배포 절차
 
@@ -72,19 +81,33 @@ npm run build
 4. Deploy 실행
 
 배포 후 GitHub 통계는 `/api/github/stats` 서버리스 함수에서 처리됩니다.
+문의 폼은 `/api/contact` 서버리스 함수에서 Supabase `contact_inquiries` 테이블로 저장됩니다.
 
 ## Supabase 관련
 
-현재 버전은 정적 포트폴리오 + GitHub 통계 API 구조라서 Supabase가 필수는 아닙니다.
+현재 버전에서는 문의 폼 저장용으로 Supabase를 사용합니다.
 
-Supabase를 붙이기 좋은 경우는 아래와 같습니다.
+### 필요한 테이블
 
-- 문의 폼 저장
-- 관리자용 데이터 관리
-- 로그인/인증
-- 프로젝트 데이터 CMS화
+SQL Editor에서 아래 파일 내용을 실행하면 됩니다.
 
-즉, 지금은 먼저 Vercel 배포가 우선이고, 이후 필요할 때 Supabase를 추가하는 편이 자연스럽습니다.
+- `supabase/contact_inquiries.sql`
+
+테이블 이름:
+
+- `public.contact_inquiries`
+
+저장 컬럼:
+
+- `name`
+- `email`
+- `message`
+- `source`
+- `user_agent`
+- `referrer`
+- `created_at`
+
+이 구조는 브라우저에서 직접 Supabase에 쓰지 않고, 서버에서만 `SUPABASE_SECRET_KEY`를 사용해 저장하도록 설계했습니다.
 
 ## 파일 구조
 
@@ -94,7 +117,10 @@ Playground/
 │  └─ github/
 │     └─ stats.js
 ├─ lib/
+│  ├─ contact-inquiries.js
 │  └─ github-stats.js
+├─ supabase/
+│  └─ contact_inquiries.sql
 ├─ public/
 ├─ src/
 │  ├─ App.jsx

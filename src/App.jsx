@@ -2,23 +2,46 @@
 
 const topStats = [
   ["19대", "운영 서버 규모 경험"],
-  ["하루 단위", "반복 수작업 자동화"],
-  ["3년+", "일본 고객 기술지원"],
+  ["하루 단위", "반복 점검 자동화"],
+  ["3년+", "일본 고객 대응"],
 ];
 
-const targetRoles = ["풀스택 개발", "백엔드 중심 개발", "운영 개발", "자동화 개발"];
+const targetRoles = ["Java · Spring 백엔드", "RDBMS", "AWS · Docker", "운영 개선 · 자동화"];
 
 const heroHighlights = [
-  "운영 이슈를 재현하고, API와 SQL, 데이터 흐름을 따라가며 원인과 영향 범위를 좁히는 방식으로 일해 왔습니다.",
-  "반복 수작업은 자동화와 문서화로 전환해 더 중요한 고객 대응과 서비스 개선에 집중할 수 있게 만드는 데 강점이 있습니다.",
-  "운영 경험을 바탕으로 화면 기능, API 연동, 세션 처리, 챗봇, 배포 구조까지 연결하는 서비스 구현 경험을 확장해 왔습니다.",
+  "운영 환경에서 쌓은 문제 재현과 원인 추적 경험을 바탕으로, 화면 기능과 API를 안정적으로 연결하는 개발을 지향합니다.",
+  "Java · Spring 기반 백엔드와 AWS, RDBMS 운영 경험을 함께 갖추고 있어 기능 구현 이후의 배포와 운영까지 고려합니다.",
+  "반복 점검과 대응 업무는 자동화와 문서화로 정리해 서비스 개선과 더 가치 있는 문제 해결에 시간을 쓰게 만드는 데 강점이 있습니다.",
 ];
 
 const profileDetails = [
   ["지향 포지션", "백엔드 강점의 풀스택 개발자"],
-  ["핵심 강점", "문제 재현, 원인 추적, 반복 업무 자동화"],
+  ["핵심 강점", "문제 재현, 원인 추적, API · SQL 기반 개선"],
   ["실무 기반", "운영 유지보수, 기술지원, 데이터 처리, AWS 운영 경험"],
-  ["확장 역량", "서비스 개선, 배포 연동, 세션 처리, 컨테이너 통신 문제 해결"],
+  ["확장 역량", "서비스 구현, 배포 연동, 세션 처리, 자동화"],
+];
+
+const techCategories = [
+  {
+    title: "백엔드",
+    items: ["Java", "Spring Boot", "MyBatis", "PHP", "FastAPI"],
+  },
+  {
+    title: "데이터베이스",
+    items: ["MySQL", "PostgreSQL", "Oracle", "MongoDB"],
+  },
+  {
+    title: "클라우드 · 배포",
+    items: ["AWS EC2", "RDS", "S3", "Docker", "Nginx", "GitHub Actions", "Amazon ECR"],
+  },
+  {
+    title: "데이터 분석 · 자동화",
+    items: ["Python", "VBA", "Alteryx", "Tableau", "Bash"],
+  },
+  {
+    title: "프런트엔드 · 기타",
+    items: ["JavaScript", "React", "Thymeleaf", "HTML/CSS", "jQuery"],
+  },
 ];
 
 const flagshipProject = {
@@ -26,9 +49,15 @@ const flagshipProject = {
   title: "LearnIT",
   productStatement: "온라인 강의, 실습, 추천을 한 화면에 묶은 학습 플랫폼",
   subtitle: "학원 팀 프로젝트 · 1개월 · 5인 팀",
+  problem:
+    "강의 시청, 실습, 질문, 추천이 각각 분리되어 있어 학습 흐름이 자주 끊기고, 학습 성취를 확인하기 어려운 구조였습니다.",
+  solution:
+    "강의 목록과 상세, Q&A, 강의평, 비로그인 장바구니, 관리자 기능, 챗봇 추천, 배포 구조까지 하나의 서비스 흐름으로 연결했습니다.",
+  impact:
+    "화면 기능, API 연동, 세션 처리, 챗봇, CI/CD, 컨테이너 배포를 하나의 서비스 안에서 경험하며 풀스택 구현 범위를 넓혔습니다.",
   quickFacts: [
     ["서비스 형태", "온라인 강의 학습 플랫폼"],
-    ["내 역할", "챗봇 구현 · 배포 · CI/CD"],
+    ["내 역할", "강의 기능 · 챗봇 · 배포"],
     ["기술 구조", "Spring Boot · FastAPI · MySQL"],
     ["배포 환경", "ECR · EC2 · Docker Compose"],
   ],
@@ -61,6 +90,25 @@ const flagshipProject = {
     "강의 목록·상세와 Q&A",
     "비로그인 장바구니와 관리자 권한",
     "챗봇 기반 강의 추천과 문의",
+  ],
+  frontendSummary: [
+    "강의 목록에서 상세, Q&A, 강의평으로 이어지는 화면 흐름 구현",
+    "비로그인 상태에서도 장바구니를 유지할 수 있도록 사용자 흐름 보완",
+    "챗봇 문의와 추천 결과를 같은 서비스 경험 안에서 이어지게 구성",
+  ],
+  frontendProof: [
+    {
+      title: "강의 탐색 흐름",
+      detail: "강의 목록, 상세, Q&A, 강의평을 끊기지 않게 이동할 수 있도록 화면 흐름을 구성했습니다.",
+    },
+    {
+      title: "상태 유지 경험",
+      detail: "로그인하지 않은 사용자도 장바구니를 유지할 수 있도록 캐시 기반 흐름으로 보완했습니다.",
+    },
+    {
+      title: "대화형 UI 연결",
+      detail: "챗봇 추천 결과에서 특정 강의를 이어서 물을 수 있게 만들어 탐색 경험을 자연스럽게 연결했습니다.",
+    },
   ],
   roleSummary: [
     "강의 목록과 사용자 기능 구현",
@@ -302,6 +350,12 @@ const projects = [
     subtitle: "학원 팀 프로젝트 · 3개 저장소 구성",
     role: "역할: 작업 구조 정리, 챗봇 구현, 배포 연동",
     result: "결과: 학습 서비스 흐름 구현과 배포 구조 경험",
+    problem:
+      "강의 시청, 실습, 질문, 추천이 분리된 학습 흐름을 하나의 서비스 경험으로 연결하는 것이 목표였습니다.",
+    action:
+      "강의 목록과 상세, Q&A, 강의평, 비로그인 장바구니, 관리자 기능, 세션 기반 챗봇, CI/CD와 배포 흐름을 구현했습니다.",
+    impact:
+      "사용자 기능과 API, 세션 처리, 컨테이너 배포를 서비스 단위로 연결하는 경험을 쌓았습니다.",
     description:
       "화면 기능, API 연동, 세션 처리, 챗봇, 배포 구조까지 하나의 서비스 안에서 연결해 본 학습 프로젝트입니다. 메인 서비스, 챗봇, 배포 저장소를 분리해 구성했습니다.",
     tech: ["Java", "Spring Boot", "Python", "Docker", "AWS ECR", "GitHub Actions"],
@@ -325,6 +379,12 @@ const projects = [
     subtitle: "팀 프로젝트 · PHP 웹 파트 담당",
     role: "역할: 사용자용 PHP 웹 시스템 전반 구현",
     result: "결과: 검색, 예약, 연장, 대출조회 등 기능 구현",
+    problem:
+      "도서관 업무를 웹에서 처리할 수 있도록 사용자용 검색, 예약, 연장, 대출 조회 기능이 필요했습니다.",
+    action:
+      "PHP 웹 파트를 맡아 도서 검색, 상세, 로그인, 예약, 연장, 대출 현황 확인까지 이어지는 화면 흐름과 데이터 조회 기능을 구현했습니다.",
+    impact:
+      "사용자가 도서관에 직접 가지 않아도 웹에서 주요 기능을 처리할 수 있는 사용자 흐름을 완성했습니다.",
     description:
       "학교 도서관 업무 개선을 위해 만든 도서 관리 시스템 프로젝트입니다. 팀으로 진행했지만 사용자용 웹 화면과 기능 흐름은 PHP 파트에서 전반적으로 구현했습니다. 사용자가 도서관에 직접 가지 않아도 웹에서 검색, 예약, 연장, 대출 현황 확인을 할 수 있도록 구성했습니다.",
     tech: ["PHP", "MySQL", "CRUD", "Web Application"],
@@ -335,6 +395,7 @@ const projects = [
       "bookDetail.php, LOGIN.PHP, detailsSearch.php, borrowList.php 등 주요 화면 구현",
       "db_connect.php와 DB 구조를 기준으로 데이터 조회 흐름 구성",
     ],
+    frontendNote: "검색 → 상세 조회 → 로그인 → 예약 및 연장 → 대출 현황 확인까지 사용자 화면 흐름을 직접 구현했습니다.",
   },
 ];
 
@@ -354,23 +415,6 @@ const education = [
     detail: "AI 프롬프트 엔지니어링 중급반 수료",
     period: "2026.01 - 2026.02",
   },
-];
-
-const skills = [
-  "Java",
-  "Spring Boot",
-  "Python",
-  "PHP",
-  "JavaScript",
-  "React",
-  "AWS",
-  "Docker",
-  "PostgreSQL",
-  "Oracle",
-  "MongoDB",
-  "Alteryx",
-  "Tableau",
-  "GitHub Actions",
 ];
 
 function contributionLevelClass(level) {
@@ -393,6 +437,15 @@ export default function App() {
   const [githubStats, setGithubStats] = useState(null);
   const [githubError, setGithubError] = useState("");
   const [githubLoading, setGithubLoading] = useState(true);
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+    website: "",
+  });
+  const [contactSubmitting, setContactSubmitting] = useState(false);
+  const [contactMessage, setContactMessage] = useState("");
+  const [contactError, setContactError] = useState("");
 
   useEffect(() => {
     let cancelled = false;
@@ -428,6 +481,49 @@ export default function App() {
     };
   }, []);
 
+  function handleContactChange(event) {
+    const { name, value } = event.target;
+    setContactForm((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  }
+
+  async function handleContactSubmit(event) {
+    event.preventDefault();
+    setContactSubmitting(true);
+    setContactMessage("");
+    setContactError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactForm),
+      });
+
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.message || "문의 저장에 실패했습니다.");
+      }
+
+      setContactMessage(payload.message || "문의가 저장되었습니다.");
+      setContactForm({
+        name: "",
+        email: "",
+        message: "",
+        website: "",
+      });
+    } catch (error) {
+      setContactError(error.message || "문의 저장 중 문제가 발생했습니다.");
+    } finally {
+      setContactSubmitting(false);
+    }
+  }
+
   return (
     <div className="portfolio-shell">
       <a className="skip-link" href="#main-content">
@@ -447,9 +543,9 @@ export default function App() {
           </a>
 
           <div className="nav-links">
+            <a href="#skills">기술 스택</a>
             <a href="#flagship">대표 프로젝트</a>
             <a href="#projects">공개 프로젝트</a>
-            <a href="#evidence">핵심 근거</a>
             <a href="#experience">경력</a>
             <a href="#contact">프로필</a>
           </div>
@@ -458,9 +554,11 @@ export default function App() {
         <section className="hero-grid" id="hero">
           <div className="hero-copy">
             <p className="eyebrow">FULLSTACK · BACKEND · AUTOMATION</p>
-            <h1>사용자 기능 구현과 운영 문제 해결 경험을 함께 쌓아온 백엔드 강점의 풀스택 개발자입니다.</h1>
+            <h1>운영 경험을 바탕으로 안정성과 정합성을 고려하는 백엔드 강점의 풀스택 개발자입니다.</h1>
             <p className="hero-text">
-              운영과 유지보수 환경에서 문제를 재현하고 원인을 좁혀 온 경험을 바탕으로, 화면 기능과 API, 세션 처리, 챗봇, 배포 구조까지 연결하는 서비스 개발 경험을 확장해 왔습니다. 반복 업무는 자동화로 줄이고, 실제 운영 문제는 코드와 데이터 흐름으로 해결하는 방식에 강점이 있습니다.
+              Java · Spring 기반 백엔드 개발과 AWS, RDBMS 운영 경험을 바탕으로 사용자 기능 구현과 운영 문제 해결을 함께
+              경험해 왔습니다. 문제 발생 시 재현과 원인 분석을 우선하고, 반복되는 작업은 자동화와 문서화로 정리해 재발 방지까지
+              이어가는 방식을 지향합니다.
             </p>
 
             <div className="role-strip" aria-label="지원 포지션">
@@ -519,6 +617,26 @@ export default function App() {
       </header>
 
       <main id="main-content">
+        <section className="section" id="skills">
+          <div className="section-heading">
+            <p>TECH STACK</p>
+            <h2>직무와 연결해 설명할 수 있는 기술 스택</h2>
+          </div>
+
+          <div className="skill-category-grid">
+            {techCategories.map((category) => (
+              <article className="skill-category-card" key={category.title}>
+                <h3>{category.title}</h3>
+                <ul className="tag-list skill-category-list" aria-label={`${category.title} 기술 목록`}>
+                  {category.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="section" id="flagship">
           <div className="section-heading">
             <p>FLAGSHIP PROJECT</p>
@@ -553,26 +671,58 @@ export default function App() {
 
             <div className="case-study-grid">
               <section className="case-block">
-                <span>대표 기능 3개</span>
-                <ul className="case-inline-list">
-                  {flagshipProject.featureSummary.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <span>문제 상황</span>
+                <p>{flagshipProject.problem}</p>
               </section>
               <section className="case-block">
-                <span>내가 한 일 3개</span>
-                <ul className="case-inline-list">
-                  {flagshipProject.roleSummary.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <span>해결 과정</span>
+                <p>{flagshipProject.solution}</p>
               </section>
               <section className="case-block">
-                <span>배포 1줄</span>
-                <p>{flagshipProject.deploymentLine}</p>
+                <span>결과</span>
+                <p>{flagshipProject.impact}</p>
               </section>
             </div>
+
+            <section className="case-block standalone-case-block">
+              <span>대표 기능 3개</span>
+              <ul className="case-inline-list">
+                {flagshipProject.featureSummary.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="case-block standalone-case-block">
+              <span>내가 한 일 3개</span>
+              <ul className="case-inline-list">
+                {flagshipProject.roleSummary.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="case-block standalone-case-block">
+              <span>프런트엔드 관점</span>
+              <ul className="case-inline-list">
+                {flagshipProject.frontendSummary.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <div className="frontend-proof-grid">
+                {flagshipProject.frontendProof.map((item) => (
+                  <article className="frontend-proof-card" key={item.title}>
+                    <strong>{item.title}</strong>
+                    <p>{item.detail}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="case-block standalone-case-block">
+              <span>배포 1줄</span>
+              <p>{flagshipProject.deploymentLine}</p>
+            </section>
 
             <section className="case-block standalone-case-block">
               <span>챗봇 구현</span>
@@ -612,27 +762,14 @@ export default function App() {
                   <img src={visual.src} alt={visual.alt} />
                 </figure>
               ))}
-              <ul className="tag-list compact-tags" aria-label="LearnIT 기술">
-                {flagshipProject.tech.map((tech) => (
-                  <li key={tech}>{tech}</li>
-                ))}
-              </ul>
             </section>
-
-            <div className="project-link-group case-link-group">
-              {flagshipProject.links.map((link) => (
-                <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
-                  {link.label}
-                </a>
-              ))}
-            </div>
           </article>
         </section>
 
         <section className="section" id="projects">
           <div className="section-heading">
-            <p>PUBLIC PROJECTS</p>
-            <h2>공개 프로젝트</h2>
+            <p>PROJECTS</p>
+            <h2>프로젝트</h2>
           </div>
 
           <div className="project-grid">
@@ -644,6 +781,20 @@ export default function App() {
                 </div>
                 <p className="project-role">{project.role}</p>
                 <p className="project-role">{project.result}</p>
+                <div className="project-triplet">
+                  <section className="project-triplet-item">
+                    <span>문제</span>
+                    <p>{project.problem}</p>
+                  </section>
+                  <section className="project-triplet-item">
+                    <span>해결</span>
+                    <p>{project.action}</p>
+                  </section>
+                  <section className="project-triplet-item">
+                    <span>결과</span>
+                    <p>{project.impact}</p>
+                  </section>
+                </div>
                 {project.title === "LibrarySystem" ? (
                   <div className="library-flow">
                     <span>기능 흐름</span>
@@ -656,6 +807,7 @@ export default function App() {
                     </div>
                   </div>
                 ) : null}
+                {project.frontendNote ? <p className="frontend-note">{project.frontendNote}</p> : null}
                 <p className="project-description">{project.description}</p>
                 {project.highlights ? (
                   <ul className="case-inline-list">
@@ -745,7 +897,7 @@ export default function App() {
         <section className="section" id="experience">
           <div className="section-heading">
             <p>EXPERIENCE</p>
-            <h2>경력</h2>
+            <h2>실무 경험</h2>
           </div>
 
           <div className="timeline">
@@ -813,7 +965,7 @@ export default function App() {
         <section className="section" id="github">
           <div className="section-heading">
             <p>GITHUB</p>
-            <h2>GitHub</h2>
+            <h2>GitHub 기록</h2>
           </div>
 
           {githubLoading ? <div className="status-card">GitHub 통계를 불러오는 중입니다.</div> : null}
@@ -844,12 +996,12 @@ export default function App() {
                 <div className="github-activity-head">
                   <div>
                     <p className="activity-label">{githubStats.summary.yearLabel}</p>
-                    <h3>공개 가능한 개발 기록도 함께 확인할 수 있습니다</h3>
+                      <h3>공개 가능한 구현 기록과 학습 흐름</h3>
+                    </div>
+                    <p className="activity-description">
+                      활동량 자체보다도, 학습과 구현이 꾸준히 이어진 흐름을 확인할 수 있는 보조 지표로 활용하고 있습니다.
+                    </p>
                   </div>
-                  <p className="activity-description">
-                    GitHub 통계는 활동량 자체보다도 학습과 구현이 지속적으로 이어진 흐름을 보여주는 보조 지표로 활용하고 있습니다.
-                  </p>
-                </div>
 
                 <div className="contribution-grid" aria-label="GitHub contribution heatmap">
                   {githubStats.calendar.weeks.map((week, weekIndex) => (
@@ -869,35 +1021,20 @@ export default function App() {
           ) : null}
         </section>
 
-        <section className="section dual-section">
-          <div className="column-card">
-            <div className="section-heading align-left">
-              <p>EDUCATION</p>
-              <h2>교육</h2>
-            </div>
-
-            <div className="stack-list">
-              {education.map((item) => (
-                <article key={`${item.title}-${item.period}`}>
-                  <strong>{item.title}</strong>
-                  <p>{item.detail}</p>
-                  <span>{item.period}</span>
-                </article>
-              ))}
-            </div>
+        <section className="section" id="education">
+          <div className="section-heading">
+            <p>EDUCATION</p>
+            <h2>최근 학습과 성장 이력</h2>
           </div>
 
-          <div className="column-card">
-            <div className="section-heading align-left">
-              <p>SKILLS</p>
-              <h2>기술</h2>
-            </div>
-
-            <ul className="skill-cloud">
-              {skills.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
+          <div className="education-grid">
+            {education.map((item) => (
+              <article className="education-card" key={`${item.title}-${item.period}`}>
+                <strong>{item.title}</strong>
+                <p>{item.detail}</p>
+                <span>{item.period}</span>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -909,7 +1046,7 @@ export default function App() {
             </div>
 
             <p className="contact-copy">
-              경력과 프로젝트, 구현 이력은 GitHub 프로필과 저장소를 통해 확인할 수 있습니다.
+              공개 가능한 구현 이력과 저장소는 아래 GitHub 프로필을 통해 확인할 수 있습니다.
             </p>
 
             <div className="contact-links">
@@ -920,6 +1057,78 @@ export default function App() {
                 보조 GitHub 보기
               </a>
             </div>
+          </div>
+
+          <div className="contact-card">
+            <div className="section-heading align-left">
+              <p>CONTACT</p>
+              <h2>문의 남기기</h2>
+            </div>
+
+            <p className="contact-copy">
+              백엔드 개발, 운영 개선, 자동화 업무와 관련한 협업이나 면접 제안이 있다면 아래 내용을 남겨 주세요.
+            </p>
+
+            <form className="contact-form" onSubmit={handleContactSubmit}>
+              <label className="contact-field">
+                <span>이름</span>
+                <input
+                  type="text"
+                  name="name"
+                  value={contactForm.name}
+                  onChange={handleContactChange}
+                  placeholder="이름을 입력해 주세요"
+                  maxLength={80}
+                  required
+                />
+              </label>
+
+              <label className="contact-field">
+                <span>이메일</span>
+                <input
+                  type="email"
+                  name="email"
+                  value={contactForm.email}
+                  onChange={handleContactChange}
+                  placeholder="reply@example.com"
+                  maxLength={120}
+                  required
+                />
+              </label>
+
+              <label className="contact-field contact-field-hidden" aria-hidden="true">
+                <span>웹사이트</span>
+                <input
+                  type="text"
+                  name="website"
+                  value={contactForm.website}
+                  onChange={handleContactChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </label>
+
+              <label className="contact-field">
+                <span>문의 내용</span>
+                <textarea
+                  name="message"
+                  value={contactForm.message}
+                  onChange={handleContactChange}
+                  placeholder="문의 내용을 10자 이상 입력해 주세요"
+                  rows={6}
+                  maxLength={4000}
+                  required
+                />
+              </label>
+
+              <div className="contact-form-footer">
+                <button className="ghost-btn contact-submit" type="submit" disabled={contactSubmitting}>
+                  {contactSubmitting ? "저장 중..." : "문의 저장"}
+                </button>
+                {contactMessage ? <p className="contact-feedback success">{contactMessage}</p> : null}
+                {contactError ? <p className="contact-feedback error">{contactError}</p> : null}
+              </div>
+            </form>
           </div>
         </section>
       </main>

@@ -2,6 +2,7 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { insertContactInquiry, validateContactPayload } from "./lib/contact-inquiries.js";
 import { getGithubStatsWithCache } from "./lib/github-stats.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -12,6 +13,8 @@ loadDotEnv(path.join(__dirname, ".env"));
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
+
+app.use(express.json({ limit: "32kb" }));
 
 app.get("/api/health", (req, res) => {
   res.json({ ok: true, date: new Date().toISOString() });
@@ -26,6 +29,43 @@ app.get("/api/github/stats", async (req, res) => {
     res.status(500).json({
       ok: false,
       message: error.message || "GitHub 통계를 불러오지 못했습니다.",
+    });
+  }
+});
+
+app.post("/api/contact", async (req, res) => {
+  try {
+    const { errors, data } = validateContactPayload(req.body);
+
+    if (data.website) {
+      return res.status(200).json({
+        ok: true,
+        message: "문의가 접수되었습니다.",
+      });
+    }
+
+    if (errors.length > 0) {
+      return res.status(400).json({
+        ok: false,
+        message: errors[0],
+      });
+    }
+
+    await insertContactInquiry(data, {
+      source: "portfolio-local",
+      userAgent: req.headers["user-agent"],
+      referrer: req.headers.referer || req.headers.referrer || null,
+    });
+
+    return res.status(201).json({
+      ok: true,
+      message: "문의가 저장되었습니다. 확인 후 답변드리겠습니다.",
+    });
+  } catch (error) {
+    console.error("Failed to store contact inquiry", error);
+    return res.status(500).json({
+      ok: false,
+      message: error.message || "문의 저장 중 문제가 발생했습니다.",
     });
   }
 });
